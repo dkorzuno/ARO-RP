@@ -64,7 +64,7 @@ func (d *deployer) PreDeploy(ctx context.Context) error {
 	// We use ACRReplica in the same way as we use fullDeploy.
 	// Caveat is that acrReplica=true should be set as global default and overridden
 	// where needed.
-	if !d.config.Configuration.ACRReplicaDisabled {
+	if d.config.Configuration.ACRReplica {
 		err = d.deployACRReplication(ctx)
 		if err != nil {
 			return err

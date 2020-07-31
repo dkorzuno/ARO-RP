@@ -84,7 +84,7 @@ func TestMergeConfig(t *testing.T) {
 			}
 
 			if !reflect.DeepEqual(&tt.want, got) {
-				t.Fatalf("%#v \n %#v", got, &tt.want)
+				t.Fatalf("%#v", got)
 			}
 		})
 	}
