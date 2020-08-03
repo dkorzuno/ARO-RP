@@ -3,7 +3,8 @@ pr: none
 
 parameters:
 - name: vsoDeployerBuildID
-  default: ''
+  type: string
+  default: "master"
 
 variables:
 - template: vars.yml
@@ -25,10 +26,10 @@ jobs:
       buildType: specific
       project: $(vso-project-id)
       pipeline: $(vso-deployer-pipeline-id)
-      ${{ if eq(parameters.vsoDeployerBuildID, '') }}:
+      ${{ if eq(parameters.vsoDeployerBuildID, 'master') }}:
         buildVersionToDownload: latestFromBranch
         branchName: refs/heads/master
-      ${{ if ne(parameters.vsoDeployerBuildID, '') }}:
+      ${{ if ne(parameters.vsoDeployerBuildID, 'master') }}:
         buildVersionToDownload: specific
         buildId: ${{ parameters.vsoDeployerBuildID }}
       downloadType: specific
