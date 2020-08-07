@@ -74,7 +74,8 @@ image-routefix:
 	docker build -f Dockerfile.routefix -t ${RP_IMAGE_ACR}.azurecr.io/routefix:$(COMMIT) .
 
 publish-image-aro: image-aro
-	docker push $(ARO_IMAGE)
+	#docker push $(ARO_IMAGE)
+	echo ${RP_IMAGE_ACR}-$(BRANCH)
 ifeq ("${RP_IMAGE_ACR}-$(BRANCH)","arointsvc-master")
 		docker tag $(ARO_IMAGE) arointsvc.azurecr.io/aro:latest
 		docker push arointsvc.azurecr.io/aro:latest
