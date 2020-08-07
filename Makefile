@@ -73,7 +73,7 @@ image-routefix:
 	docker pull registry.access.redhat.com/ubi8/ubi
 	docker build -f Dockerfile.routefix -t ${RP_IMAGE_ACR}.azurecr.io/routefix:$(COMMIT) .
 
-publish-image-aro: image-aro
+publish-image-aro:
 	#docker push $(ARO_IMAGE)
 	echo ${RP_IMAGE_ACR}-$(BRANCH)
 ifeq ("${RP_IMAGE_ACR}-$(BRANCH)","arointsvc-master")
